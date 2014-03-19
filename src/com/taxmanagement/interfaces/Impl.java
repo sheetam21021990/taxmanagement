@@ -1,6 +1,5 @@
 package com.taxmanagement.interfaces;
 
-import org.apache.struts.action.ActionForm;
 
 public interface Impl {
 	

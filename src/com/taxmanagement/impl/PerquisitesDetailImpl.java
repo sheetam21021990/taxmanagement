@@ -1,7 +1,5 @@
 package com.taxmanagement.impl;
 
-import org.apache.struts.action.ActionForm;
-
 import com.taxmanagement.interfaces.Impl;
 
 
@@ -11,53 +9,54 @@ import com.taxmanagement.interfaces.Impl;
  */
 public class PerquisitesDetailImpl implements Impl {
 
-	@Override
-	public void selectAll(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void selectAll() {
+		
 		
 	}
 
-	@Override
-	public void select(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void select() {
+		
 		
 	}
 
-	@Override
-	public void insert(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void insert() {
+		
 		
 	}
 
-	@Override
-	public void insertAll(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void insertAll() {
+		
 		
 	}
 
-	@Override
-	public void update(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void update() {
+		
 		
 	}
 
-	@Override
-	public void updateAll(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void updateAll() {
+		
 		
 	}
 
-	@Override
-	public void delete(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void delete() {
+		
 		
 	}
 
-	@Override
-	public void deleteAll(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void deleteAll() {
+		
 		
 	}
+
 	
 	
 }

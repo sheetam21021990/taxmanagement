@@ -1,7 +1,5 @@
 package com.taxmanagement.impl;
 
-import org.apache.struts.action.ActionForm;
-
 import com.taxmanagement.interfaces.Impl;
 
 
@@ -11,54 +9,55 @@ import com.taxmanagement.interfaces.Impl;
  */
 public class UserDetailImpl implements Impl {
 
-	@Override
-	public void selectAll(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void select(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void insert(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void insertAll(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateAll(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAll(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
 	
+	public void selectAll() {
+		
+		
+		
+	}
+
+	
+	public void select() {
+		
+		
+	}
+
+	
+	public void insert() {
+		
+		
+	}
+
+	
+	public void insertAll() {
+		
+		
+	}
+
+	
+	public void update() {
+		
+		
+	}
+
+	
+	public void updateAll() {
+		
+		
+	}
+
+	
+	public void delete() {
+		
+		
+	}
+
+	
+	public void deleteAll() {
+		
+		
+	}
+
 	
 	
 }
