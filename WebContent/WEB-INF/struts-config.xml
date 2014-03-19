@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+<struts-config>
+    <form-beans>
+        <form-bean name="CashExpenditure" type="com.cashflowmanagement.form.CashExpenditure"/>
+        <form-bean name="CashPurchase" type="com.cashflowmanagement.form.CashPurchase"/>
+        <form-bean name="CashSale" type="com.cashflowmanagement.form.CashSale"/>
+        <form-bean name="ChequePayment" type="com.cashflowmanagement.form.ChequePayment"/>
+        <form-bean name="ChequeReceipt" type="com.cashflowmanagement.form.ChequeReceipt"/>
+        <form-bean name="ChequeReceipt" type="com.cashflowmanagement.form.ChequeReceipt"/>
+        <form-bean name="CreditSale" type="com.cashflowmanagement.form.CreditSale"/>
+        <form-bean name="DepositInBank" type="com.cashflowmanagement.form.DepositInBank"/>
+        <form-bean name="PaymentToCreditor" type="com.cashflowmanagement.form.PaymentToCreditor"/>
+        <form-bean name="SaleOfGood" type="com.cashflowmanagement.form.SaleOfGood"/>
+        <form-bean name="SaleOfOther" type="com.cashflowmanagement.form.SaleOfOther"/>
+        <form-bean name="TaxPayment" type="com.cashflowmanagement.form.TaxPayment"/>
+        <form-bean name="WithdrawalFromBank" type="com.cashflowmanagement.form.WithdrawalFromBank"/>
+    	
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+        <forward name="login"  path="/jsp/login.jsp"/>
+        <forward name="failure" path="/jsp/failure.jsp" />
+    </global-forwards>
+
+    <action-mappings>
+        <action input="/login.jsp" name="LoginForm" path="/Login" scope="session" type="com.cashflowmanagement.action.LoginAction">
+            
+        </action>
+        <action name="LoginForm" path="/Logout" scope="session" type="com.cashflowmanagement.action.LogoutAction">
+        </action>
+        
+        <action name="TaxForm" path="/tax" scope="session" type="com.cashflowmanagement.action.TaxMasterAction">
+            
+        </action>
+        
+        <action name="UserForm" path="/user" scope="session" type="com.cashflowmanagement.action.UserAction">
+            
+        </action>
+        
+        <action name="UserForm" path="/profile" scope="request" type="com.cashflowmanagement.action.ProfileAction">
+            
+        </action>
+        
+    </action-mappings>
+    
+    <!-- <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/> -->
+
+    <message-resources parameter="com/cashflowmanagement/resource/ApplicationResource"/>
+    
+   <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>

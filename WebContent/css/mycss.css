@@ -1,0 +1,50 @@
+body {
+	position: fixed;
+	top: 150px;
+	text-align: center;
+	height: 80%;
+	width: 100%;
+}
+
+img.status{
+height:25px;
+width:25px;		
+}
+
+img.menu{
+height:50px;
+width:50px;	
+}
+
+img.menu:HOVER{
+	box-shadow:2px 2px 10px 10px #D8F6CE;
+}
+
+table.datatable {
+	width: 90%;
+	border: 1;
+	border-color: teal;
+	border-bottom-style: double;
+}
+
+table.datatable .odd {
+	background: #CCC
+}
+
+table.datatable thead {
+	background: green;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: underline;
+	color: white;
+	font-size: medium;
+	text-align: center;
+}
+
+table.datatable thead th {
+	text-align: center;
+}
+
+table.datatable tbody td {
+	text-align: center;
+}
