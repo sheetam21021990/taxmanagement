@@ -4,20 +4,20 @@ import org.apache.struts.action.ActionForm;
 
 public interface Impl {
 	
-	public void selectAll(ActionForm form);
+	public void selectAll();
 
-	public void select(ActionForm form);
+	public void select();
 
-	public void insert(ActionForm form);
+	public void insert();
 
-	public void insertAll(ActionForm form);
+	public void insertAll();
 	
-	public void update(ActionForm form);
+	public void update();
 	
-	public void updateAll(ActionForm form);
+	public void updateAll();
 
-	public void delete(ActionForm form);
+	public void delete();
 	
-	public void deleteAll(ActionForm form);
+	public void deleteAll();
 	
 }

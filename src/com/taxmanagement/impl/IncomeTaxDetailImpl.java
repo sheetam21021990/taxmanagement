@@ -1,64 +1,78 @@
 package com.taxmanagement.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import org.apache.struts.action.ActionForm;
 
+import com.taxmanagement.form.IncomeTaxDetail;
 import com.taxmanagement.interfaces.Impl;
 
 
-/**
- * The persistent class for the income_tax_details database table.
- * 
- */
 
 public class IncomeTaxDetailImpl implements Impl {
 
-	@Override
-	public void selectAll(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void select(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void insert(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void insertAll(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void updateAll(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(ActionForm form) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAll(ActionForm form) {
-		// TODO Auto-generated method stub
-		
+	Connection con = null;
+	Statement stmt = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	IncomeTaxDetail bean = null;
+	
+	public IncomeTaxDetailImpl(ActionForm form){
+		this.bean = (IncomeTaxDetail)form;
 	}
 	
+	
+	
+	public void selectAll() {
+		
+		
+	}
+
+	
+	public void select() {
+		
+		
+	}
+
+	
+	public void insert() {
+		
+		
+	}
+
+	
+	public void insertAll() {
+		
+		
+	}
+
+	
+	public void update() {
+		
+		
+	}
+
+	
+	public void updateAll() {
+		
+		
+	}
+
+	
+	public void delete() {
+		
+		
+	}
+
+	
+	public void deleteAll() {
+
+		
+	}
 	
 }

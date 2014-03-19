@@ -1,8 +1,18 @@
 package com.taxmanagement.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 import org.apache.struts.action.ActionForm;
 
+import com.taxmanagement.DBConnect.DBConnect;
+import com.taxmanagement.form.BasicSalaryDetail;
 import com.taxmanagement.interfaces.Impl;
+import com.taxmanagement.vo.BasicSalaryDetailVo;
 
 
 /**
@@ -11,52 +21,95 @@ import com.taxmanagement.interfaces.Impl;
  */
 public class BasicSalaryDetailImpl implements Impl{
 
-	@Override
-	public void selectAll(ActionForm form) {
-		// TODO Auto-generated method stub
+	Connection con = null;
+	Statement stmt = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	BasicSalaryDetail bean = null;
+	
+	public BasicSalaryDetailImpl(ActionForm form){
+		this.bean = (BasicSalaryDetail)form;
+	}
+
+	
+	public void selectAll() {
+		
+		try {
+			con = DBConnect.openConnection();
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT sl_no, user_id, job_description, gross_salary, da, allowance, medical, servant, transport  FROM basic_salary_details ");
+
+			ArrayList<BasicSalaryDetailVo> basicSalaryDetailVo = new ArrayList<BasicSalaryDetailVo>();
+			
+			while (rs.next()) {
+				
+				BasicSalaryDetailVo vo = new BasicSalaryDetailVo(
+						rs.getInt("sl_no"), 
+						rs.getString("allowance"), 
+						rs.getString("da"), 
+						rs.getString("gross_salary"), 
+						rs.getString("job_description"), 
+						rs.getString("medical"), 
+						rs.getString("servant"), 
+						rs.getString("transport"), 
+						rs.getString("user_id"));
+
+				basicSalaryDetailVo.add(vo);
+			}
+			bean.setBasicSalaryDetailVo(basicSalaryDetailVo);
+			
+			DBConnect.closeConnection(con);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch(Exception e){
+			e.printStackTrace();
+		}
 		
 	}
 
-	@Override
-	public void select(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void select() {
+		
 		
 	}
 
-	@Override
-	public void insert(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void insert() {
+		
 		
 	}
 
-	@Override
-	public void insertAll(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void insertAll() {
+		
 		
 	}
 
-	@Override
-	public void update(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void update() {
+		
 		
 	}
 
-	@Override
-	public void updateAll(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void updateAll() {
+		
 		
 	}
 
-	@Override
-	public void delete(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void delete() {
+		
 		
 	}
 
-	@Override
-	public void deleteAll(ActionForm form) {
-		// TODO Auto-generated method stub
+	
+	public void deleteAll() {
+		
 		
 	}
+	
 	
 }
