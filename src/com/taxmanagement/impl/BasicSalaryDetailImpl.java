@@ -109,27 +109,7 @@ public class BasicSalaryDetailImpl implements Impl{
 		try {
 			con = DBConnect.openConnection();
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT INTO basic_salary_details(user_id,job_description,gross_salary,da,allowance,medical,servant,transport) VALUES ('"+bean.getSlNo()+"','"+bean.getUserId()+"','"+bean.getJobDescription()+"','"+bean.getGrossSalary()+"','"+bean.getDa()+"','"+bean.getAllowance()+"','"+bean.getMedical()+"','"+bean.getServant()+"','"+bean.getTransport()+"')");
-
-			ArrayList<BasicSalaryDetailVo> basicSalaryDetailVo = new ArrayList<BasicSalaryDetailVo>();
-			
-			while (rs.next()) {
-				
-				BasicSalaryDetailVo vo = new BasicSalaryDetailVo(
-						rs.getInt("sl_no"), 
-						rs.getString("allowance"), 
-						rs.getString("da"), 
-						rs.getString("gross_salary"), 
-						rs.getString("job_description"), 
-						rs.getString("medical"), 
-						rs.getString("servant"), 
-						rs.getString("transport"), 
-						rs.getString("user_id"));
-
-				basicSalaryDetailVo.add(vo);
-			}
-			bean.setBasicSalaryDetailVo(basicSalaryDetailVo);
-			
+			int rs = stmt.executeUpdate("INSERT INTO basic_salary_details(user_id,job_description,gross_salary,da,allowance,medical,servant,transport) VALUES ('"+bean.getUserId()+"','"+bean.getJobDescription()+"','"+bean.getGrossSalary()+"','"+bean.getDa()+"','"+bean.getAllowance()+"','"+bean.getMedical()+"','"+bean.getServant()+"','"+bean.getTransport()+"')");
 			DBConnect.closeConnection(con);
 
 		} catch (SQLException e) {

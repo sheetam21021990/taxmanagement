@@ -31,6 +31,13 @@ public class UserDetailAction extends Action implements ActionInterface {
 		
 		impl.select();
 		
+		if("ADMIN".equalsIgnoreCase(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name()).toString()) ){
+			return mapping.findForward("dashboard");
+		}else if("USER".equalsIgnoreCase(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name()).toString())){
+			return mapping.findForward("userdashboard");
+		}
+		
+		
 		return mapping.findForward("userdashboard");
 		
 		

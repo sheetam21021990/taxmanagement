@@ -73,7 +73,7 @@
  </form>
 
 
-<form action="useraction.do" method="post">
+<form action="basicsalaryaction.do" method="post">
 <div class="modal fade" id="myModalbasicsalary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -95,11 +95,12 @@
 
         
 		</table>
-
+		<input type="hidden" name="task" value="add">
+			
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
-        <button type="button" class="btn btn-primary" onclick="addElement()">ADD</button>
+        <button type="submit" class="btn btn-primary">ADD</button>
       </div>
       </html:form>
     </div>

@@ -8,6 +8,9 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.taxmanagement.common.Common;
+import com.taxmanagement.form.BasicSalaryDetail;
+import com.taxmanagement.impl.BasicSalaryDetailImpl;
 import com.taxmanagement.interfaces.ActionInterface;
 
 public class BasicSalaryDetailAction extends Action implements ActionInterface{
@@ -16,14 +19,33 @@ public class BasicSalaryDetailAction extends Action implements ActionInterface{
 
 		
 		
+		BasicSalaryDetail salaryDetail = (BasicSalaryDetail)form;
+		salaryDetail.setUserId(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERNAME.name()).toString());
+		
+		BasicSalaryDetailImpl impl = new BasicSalaryDetailImpl(salaryDetail);
+		
+		if(request.getParameter("task") != null){
+			if("update".equalsIgnoreCase(request.getParameter("task").toString())){
+				impl.update();
+			}
+			else if("add".equalsIgnoreCase(request.getParameter("task").toString())){
+				impl.insert();
+			}
+		}
+		
+		impl.select();
 		
 		
 		
 		
 		
+		if("ADMIN".equalsIgnoreCase(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name()).toString()) ){
+			return mapping.findForward("dashboard");
+		}else if("USER".equalsIgnoreCase(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name()).toString())){
+			return mapping.findForward("userdashboard");
+		}
 		
-		
-		return null;
+		return mapping.findForward("error");
 	}
 	
 	

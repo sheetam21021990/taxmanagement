@@ -26,6 +26,8 @@ public class LoginAction extends Action implements ActionInterface {
 		if("ADMIN".equalsIgnoreCase(login.getUserType()) || "USER".equalsIgnoreCase(login.getUserType())){
 
 			request.getSession().setAttribute(Common.SESSIONKEY.LOGGEDINUSERID.name(), login.getId());
+			request.getSession().setAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name(), login.getUserType());
+			request.getSession().setAttribute(Common.SESSIONKEY.LOGGEDINUSERNAME.name(), login.getUsername());
 
 			return mapping.findForward("dashboard");
 		}
