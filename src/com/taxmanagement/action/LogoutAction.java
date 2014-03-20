@@ -24,6 +24,7 @@ public class LogoutAction extends org.apache.struts.action.Action {
 		request.getSession().removeAttribute(Common.SESSIONKEY.LOGGEDINUSERNAME.name());
 		request.getSession().removeAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name());
 
+		request.getSession().invalidate();
 
 		return mapping.findForward("login");
 	}

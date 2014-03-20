@@ -1,6 +1,7 @@
 <div style="width: 100%; height:50px; position:fixed;top:80px; box-shadow: 10px 10px 5px #888888;">
 		
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.validate.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/mycss.css" type="text/css"/>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.css" type="text/css"/>
@@ -25,7 +26,7 @@
  <%  DashBoard dash = (DashBoard)session.getAttribute("DashBoard");  %>
  
 <!-- Modal -->
-<form action="useraction.do" method="post">
+<form action="useraction.do" method="post" id="form1" name="form1">
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -43,7 +44,7 @@
 	
 	        <tr><td align="left">USERNAME </td><td>:<input readonly="readonly"  type="text" id="username" name="username" value="<%= dash.getUserDetailsVo().get(0).getUsername() %>"></td></tr>
 			<tr><td align="left">PASSWORD </td><td>:<input  type="password" id="password" name="password" value="<%= dash.getUserDetailsVo().get(0).getPassword() %>"></td></tr>
-			<tr><td align="left">FULLNAME </td><td>:<input  type="text" id="fullname" name="fullname" value="<%= dash.getUserDetailsVo().get(0).getFullname() %>"></td></tr>
+			<tr><td align="left">FULLNAME </td><td>:<input class="required" type="text" id="fullname" name="fullname" value="<%= dash.getUserDetailsVo().get(0).getFullname() %>"></td></tr>
 			<tr><td align="left">PANCARDNO </td><td>:<input  type="text" id="pancardNo" name="pancardNo" value="<%= dash.getUserDetailsVo().get(0).getPancardNo() %>"></td></tr>
 			<tr><td align="left">VOTERID </td><td>:<input  type="text" id="voterId" name="voterId" value="<%= dash.getUserDetailsVo().get(0).getVoterId() %>"></td></tr>
 			<tr><td align="left">FAXNO </td><td>:<input  type="text" id="faxNo" name="faxNo" value="<%= dash.getUserDetailsVo().get(0).getFaxNo() %>"></td></tr>
@@ -70,7 +71,14 @@
   </div>
 </div>
  </form>
-
+<script>
+$("#form1").validate({
+	submitHandler: function(form) {
+	// do other things for a valid form
+	form.submit();
+	}
+	});
+</script>
 
 <form action="basicsalaryaction.do" method="post">
 <div class="modal fade" id="myModalbasicsalary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -85,7 +93,7 @@
         <table align="center" height="400px"">
 
 			<tr><td align="left">USERID </td><td>:<input readonly="readonly" type="text" id="userId" name="userId" value="<%= session.getAttribute(Common.SESSIONKEY.LOGGEDINUSERNAME.name()) %>"></td></tr>
-			<tr><td align="left">JOBDESCRIPTION </td><td>:<input type="text" id="jobDescription" name="jobDescription"></td></tr>
+			<tr><td align="left">JOBDESCRIPTION </td><td>:<input class="required" type="text" id="jobDescription" name="jobDescription"></td></tr>
 			<tr><td align="left">GROSSSALARY </td><td>:<input type="text" id="grossSalary" name="grossSalary"></td></tr>
 			<tr><td align="left">DA </td><td>:<input type="text" id="da" name="da"></td></tr>
 			<tr><td align="left">ALLOWANCE </td><td>:<input type="text" id="allowance" name="allowance"></td></tr>
