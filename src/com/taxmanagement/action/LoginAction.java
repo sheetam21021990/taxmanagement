@@ -18,21 +18,25 @@ public class LoginAction extends Action implements ActionInterface {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		Login login = (Login)form;
+		try {
+			Login login = (Login)form;
 
-		LoginImpl impl = new LoginImpl();
-		impl.login(login);
+			LoginImpl impl = new LoginImpl();
+			impl.login(login);
 
-		if("ADMIN".equalsIgnoreCase(login.getUserType()) || "USER".equalsIgnoreCase(login.getUserType())){
+			if("ADMIN".equalsIgnoreCase(login.getUserType()) || "USER".equalsIgnoreCase(login.getUserType())){
 
-			request.getSession().setAttribute(Common.SESSIONKEY.LOGGEDINUSERID.name(), login.getId());
-			request.getSession().setAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name(), login.getUserType());
-			request.getSession().setAttribute(Common.SESSIONKEY.LOGGEDINUSERNAME.name(), login.getUsername());
+				request.getSession().setAttribute(Common.SESSIONKEY.LOGGEDINUSERID.name(), login.getId());
+				request.getSession().setAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name(), login.getUserType());
+				request.getSession().setAttribute(Common.SESSIONKEY.LOGGEDINUSERNAME.name(), login.getUsername());
 
-			return mapping.findForward("dashboard");
+				return mapping.findForward("dashboard");
+			}
+			return mapping.findForward("loginfailure");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return mapping.findForward("loginfailure");
-
+		return mapping.findForward("login");
 	}
 
 }

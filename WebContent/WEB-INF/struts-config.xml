@@ -12,6 +12,7 @@
         <form-bean name="PerquisitesDetail" type="com.taxmanagement.form.PerquisitesDetail"/>
         <form-bean name="UserDetail" type="com.taxmanagement.form.UserDetail"/>
 		<form-bean name="Login" type="com.taxmanagement.form.Login"/>
+		<form-bean name="DashBoard" type="com.taxmanagement.form.DashBoard"/>
     	
     </form-beans>
     
@@ -30,20 +31,34 @@
             <forward name="dashboard"  path="/dashboardaction.do"/>
         </action>
         
-        <action name="UserDetail" path="/dashboardaction" scope="session" type="com.taxmanagement.action.UserDetailAction">
+        <action name="DashBoard" path="/dashboardaction" scope="session" type="com.taxmanagement.action.DashboardAction">
             <forward name="userdashboard"  path="/jsp/userdashboard.jsp"/>
             <forward name="dashboard"  path="/jsp/dashboard.jsp"/>
         </action>
      
      	<action name="UserDetail" path="/useraction" scope="session" type="com.taxmanagement.action.UserDetailAction">
-            <forward name="userdashboard"  path="/jsp/userdashboard.jsp"/>
-            <forward name="dashboard"  path="/jsp/dashboard.jsp"/>
+            <forward name="userdashboard"  path="/dashboardaction.do"/>
+            <forward name="dashboard"  path="/dashboardaction.do"/>
         </action>
         
         <action name="BasicSalaryDetail" path="/basicsalaryaction" scope="session" type="com.taxmanagement.action.BasicSalaryDetailAction">
-            <forward name="userdashboard"  path="/jsp/userdashboard.jsp"/>
-            <forward name="dashboard"  path="/jsp/dashboard.jsp"/>
+            <forward name="userdashboard"  path="/dashboardaction.do"/>
+            <forward name="dashboard"  path="/dashboardaction.do"/>
         </action>
+        
+        <action name="PerquisitesDetail" path="/perquisitesdetailaction" scope="session" type="com.taxmanagement.action.PerquisitesDetailAction">
+            <forward name="userdashboard"  path="/dashboardaction.do"/>
+            <forward name="dashboard"  path="/dashboardaction.do"/>
+        </action>
+        
+        <action name="IncomeTaxDetail" path="/incometaxdetailaction" scope="session" type="com.taxmanagement.action.IncomeTaxDetailAction">
+            <forward name="userdashboard"  path="/dashboardaction.do"/>
+            <forward name="dashboard"  path="/dashboardaction.do"/>
+        </action>
+        
+         <action name="IncomeTaxDetail" path="/Logout" scope="session" type="com.taxmanagement.action.LogoutAction">
+            <forward name="userdashboard"  path="/jsp/login.jsp"/>
+         </action>
      
     </action-mappings>
     

@@ -9,31 +9,24 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.taxmanagement.common.Common;
-import com.taxmanagement.form.PerquisitesDetail;
-import com.taxmanagement.impl.PerquisitesDetailImpl;
+import com.taxmanagement.form.DashBoard;
+import com.taxmanagement.form.UserDetail;
+import com.taxmanagement.impl.DashBoardImpl;
+import com.taxmanagement.impl.UserDetailImpl;
 import com.taxmanagement.interfaces.ActionInterface;
 
 
-public class PerquisitesDetailAction extends Action implements ActionInterface {
+public class DashboardAction extends Action implements ActionInterface {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
 		try {
-			PerquisitesDetail perquisitesDetail = (PerquisitesDetail)form;
-			perquisitesDetail.setUserId(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERNAME.name()).toString());
+			DashBoard dashBoard = (DashBoard)form;
+			dashBoard.setUserid((String)request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERNAME.name()));
 			
-			PerquisitesDetailImpl impl = new PerquisitesDetailImpl(perquisitesDetail);
+			DashBoardImpl impl = new DashBoardImpl(dashBoard);
 			
-			if(request.getParameter("task") != null){
-				if("update".equalsIgnoreCase(request.getParameter("task").toString())){
-					impl.update();
-				}
-				else if("add".equalsIgnoreCase(request.getParameter("task").toString())){
-					impl.insert();
-				}
-			}
-			
-			impl.select();
+			impl.getDashboardData();
 			
 			if("ADMIN".equalsIgnoreCase(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name()).toString()) ){
 				return mapping.findForward("dashboard");
@@ -41,17 +34,13 @@ public class PerquisitesDetailAction extends Action implements ActionInterface {
 				return mapping.findForward("userdashboard");
 			}
 			
-			return mapping.findForward("error");
+			
+			return mapping.findForward("userdashboard");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mapping.findForward("login");
-
+		
 	}
-	
-	
-	
-	
-	
-	
+
 }

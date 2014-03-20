@@ -130,27 +130,8 @@ public class BasicSalaryDetailImpl implements Impl{
 		try {
 			con = DBConnect.openConnection();
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("UPDATE basic_salary_details SET user_id = '"+bean.getUserId()+"',job_description = '"+bean.getJobDescription()+"',gross_salary = '"+bean.getGrossSalary()+"',da = '"+bean.getDa()+"',allowance = '"+bean.getAllowance()+"',medical = '"+bean.getMedical()+"',servant = '"+bean.getServant()+"',transport = '"+bean.getTransport()+"' WHERE sl_no = '"+bean.getSlNo()+"'");
+			ResultSet rs = stmt.executeQuery("UPDATE basic_salary_details SET job_description = '"+bean.getJobDescription()+"',gross_salary = '"+bean.getGrossSalary()+"',da = '"+bean.getDa()+"',allowance = '"+bean.getAllowance()+"',medical = '"+bean.getMedical()+"',servant = '"+bean.getServant()+"',transport = '"+bean.getTransport()+"' WHERE user_id = '"+bean.getUserId()+"'");
 
-			ArrayList<BasicSalaryDetailVo> basicSalaryDetailVo = new ArrayList<BasicSalaryDetailVo>();
-			
-			while (rs.next()) {
-				
-				BasicSalaryDetailVo vo = new BasicSalaryDetailVo(
-						rs.getInt("sl_no"), 
-						rs.getString("allowance"), 
-						rs.getString("da"), 
-						rs.getString("gross_salary"), 
-						rs.getString("job_description"), 
-						rs.getString("medical"), 
-						rs.getString("servant"), 
-						rs.getString("transport"), 
-						rs.getString("user_id"));
-
-				basicSalaryDetailVo.add(vo);
-			}
-			bean.setBasicSalaryDetailVo(basicSalaryDetailVo);
-			
 			DBConnect.closeConnection(con);
 
 		} catch (SQLException e) {

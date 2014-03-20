@@ -101,21 +101,7 @@ public class IncomeTaxDetailImpl implements Impl {
 		try {
 			con = DBConnect.openConnection();
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT INTO income_tax_details(user_id,assesment_year,paid_incometax) VALUES ('"+bean.getSlNo()+"','"+bean.getUserId()+"','"+bean.getAssesmentYear()+"','"+bean.getPaidIncometax()+"')");
-
-			ArrayList<IncomeTaxDetailVo> incomeTaxDetailVo = new ArrayList<IncomeTaxDetailVo>();
-			
-			while (rs.next()) {
-				
-				IncomeTaxDetailVo vo = new IncomeTaxDetailVo(
-						rs.getInt("sl_no"), 
-						rs.getString("user_id"), 						
-						rs.getInt("paid_incometax"),
-						rs.getString("assesment_year"));
-
-				incomeTaxDetailVo.add(vo);
-			}
-			bean.setIncomeTaxDetailVo(incomeTaxDetailVo);
+			int rs = stmt.executeUpdate("INSERT INTO income_tax_details(user_id,assesment_year,paid_incometax) VALUES ('"+bean.getUserId()+"','"+bean.getAssesmentYear()+"','"+bean.getPaidIncometax()+"')");
 			
 			DBConnect.closeConnection(con);
 

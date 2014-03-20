@@ -18,28 +18,32 @@ public class UserDetailAction extends Action implements ActionInterface {
 
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-		UserDetail userDetail = (UserDetail)form;
-		userDetail.setId((Integer)request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERID.name()));
-		
-		UserDetailImpl impl = new UserDetailImpl(userDetail);
-		
-		if(request.getParameter("task") != null){
-			if("update".equalsIgnoreCase(request.getParameter("task").toString())){
-				impl.update();
+		try {
+			UserDetail userDetail = (UserDetail)form;
+			userDetail.setId((Integer)request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERID.name()));
+			
+			UserDetailImpl impl = new UserDetailImpl(userDetail);
+			
+			if(request.getParameter("task") != null){
+				if("updateuser".equalsIgnoreCase(request.getParameter("task").toString())){
+					impl.update();
+				}
 			}
-		}
-		
-		impl.select();
-		
-		if("ADMIN".equalsIgnoreCase(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name()).toString()) ){
-			return mapping.findForward("dashboard");
-		}else if("USER".equalsIgnoreCase(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name()).toString())){
+			
+			impl.select();
+			
+			if("ADMIN".equalsIgnoreCase(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name()).toString()) ){
+				return mapping.findForward("dashboard");
+			}else if("USER".equalsIgnoreCase(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERTYPE.name()).toString())){
+				return mapping.findForward("userdashboard");
+			}
+			
+			
 			return mapping.findForward("userdashboard");
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		
-		return mapping.findForward("userdashboard");
-		
+		return mapping.findForward("login");
 		
 	}
 

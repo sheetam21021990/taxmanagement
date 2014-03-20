@@ -100,21 +100,7 @@ public class PerquisitesDetailImpl implements Impl {
 		try {
 			con = DBConnect.openConnection();
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT INTO perquisites_details(user_id,free_housing) VALUES ('"+bean.getSlNo()+"','"+bean.getUserId()+"','"+bean.getFreeHousing()+"')");
-
-			ArrayList<PerquisitesDetailVo> perquisitesDetailVo = new ArrayList<PerquisitesDetailVo>();
-			
-			while (rs.next()) {
-				
-				PerquisitesDetailVo vo = new PerquisitesDetailVo(
-						rs.getInt("sl_no"), 
-						rs.getString("free_housing"), 						
-						rs.getString("user_id"));
-
-				perquisitesDetailVo.add(vo);
-			}
-			bean.setPerquisitesDetailVo(perquisitesDetailVo);
-			
+			int rs = stmt.executeUpdate("INSERT INTO perquisites_details(user_id,free_housing) VALUES ('"+bean.getUserId()+"','"+bean.getFreeHousing()+"')");
 			DBConnect.closeConnection(con);
 
 		} catch (SQLException e) {
