@@ -1,13 +1,9 @@
-package com.taxmanagement.vo;
+package com.taxmanagement.form;
 
-import java.io.Serializable;
+import org.apache.struts.action.ActionForm;
 
 
-/**
- * The persistent class for the user_details database table.
- * 
- */
-public class UserDetailVo implements Serializable {
+public class Login extends ActionForm {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
@@ -33,40 +29,31 @@ public class UserDetailVo implements Serializable {
 	private String username;
 
 	private String voterId;
+	
+	private String userType;
 
-	public UserDetailVo() {
+	public Login() {
 	}
 
 	
+	
 
-	public UserDetailVo(int id, String username,String password,String fullname,String pancardNo,String voterId, String faxNo, String phoneNo,String mobileNo, String address, String emailId,String status) {
-		
+	public String getUserType() {
+		return userType;
+	}
 
-		
-		this.id = id;
-		this.address = address;
-		this.emailId = emailId;
-		this.faxNo = faxNo;
-		this.fullname = fullname;
-		this.mobileNo = mobileNo;
-		this.pancardNo = pancardNo;
-		this.password = password;
-		this.phoneNo = phoneNo;
-		this.username = username;
-		this.voterId = voterId;
-		
-		if("A".equalsIgnoreCase(status)){
-			this.status = "/taxmanagement/icons/active.png";
-		}else{
-			this.status =  "/taxmanagement/icons/deactive.png";
-		}		
+
+
+
+	public void setUserType(String userType) {
+		this.userType = userType;
 	}
 
 
 
 
 	public int getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(int id) {
@@ -74,7 +61,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getAddress() {
-		return this.address;
+		return address;
 	}
 
 	public void setAddress(String address) {
@@ -82,7 +69,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getEmailId() {
-		return this.emailId;
+		return emailId;
 	}
 
 	public void setEmailId(String emailId) {
@@ -90,7 +77,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getFaxNo() {
-		return this.faxNo;
+		return faxNo;
 	}
 
 	public void setFaxNo(String faxNo) {
@@ -98,7 +85,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getFullname() {
-		return this.fullname;
+		return fullname;
 	}
 
 	public void setFullname(String fullname) {
@@ -106,7 +93,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getMobileNo() {
-		return this.mobileNo;
+		return mobileNo;
 	}
 
 	public void setMobileNo(String mobileNo) {
@@ -114,7 +101,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getPancardNo() {
-		return this.pancardNo;
+		return pancardNo;
 	}
 
 	public void setPancardNo(String pancardNo) {
@@ -122,7 +109,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
 	public void setPassword(String password) {
@@ -130,7 +117,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getPhoneNo() {
-		return this.phoneNo;
+		return phoneNo;
 	}
 
 	public void setPhoneNo(String phoneNo) {
@@ -138,7 +125,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getStatus() {
-		return this.status;
+		return status;
 	}
 
 	public void setStatus(String status) {
@@ -146,7 +133,7 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getUsername() {
-		return this.username;
+		return username;
 	}
 
 	public void setUsername(String username) {
@@ -154,11 +141,12 @@ public class UserDetailVo implements Serializable {
 	}
 
 	public String getVoterId() {
-		return this.voterId;
+		return voterId;
 	}
 
 	public void setVoterId(String voterId) {
 		this.voterId = voterId;
 	}
 
+	
 }

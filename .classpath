@@ -39,5 +39,6 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/servlet.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/struts.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/swtgraphics2d.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/dwr.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

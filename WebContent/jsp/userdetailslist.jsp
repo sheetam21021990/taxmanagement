@@ -56,7 +56,7 @@
       <div class="modal-body">
         <table align="center" height="400px"">
 
-        		<tr><td align="left">ID </td><td>:<input type="text" id="id" name="id"></td></tr>
+        <tr><td align="left">ID </td><td>:<input type="text" id="id" name="id"></td></tr>
 		<tr><td align="left">USERNAME </td><td>:<input type="text" id="username" name="username"></td></tr>
 		<tr><td align="left">PASSWORD </td><td>:<input type="text" id="password" name="password"></td></tr>
 		<tr><td align="left">FULLNAME </td><td>:<input type="text" id="fullname" name="fullname"></td></tr>

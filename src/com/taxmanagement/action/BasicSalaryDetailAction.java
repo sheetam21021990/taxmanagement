@@ -19,6 +19,10 @@ public class BasicSalaryDetailAction extends Action implements ActionInterface{
 		
 		
 		
+		
+		
+		
+		
 		return null;
 	}
 	

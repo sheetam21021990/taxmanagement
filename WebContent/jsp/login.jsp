@@ -21,14 +21,14 @@
         <div style="color:red">
             <html:errors />
         </div>
-        <html:form action="/Login" >
+        <html:form action="/login" >
             
         <!-- <table><tr><td width="1500px" height="500px" valign="middle" align="center">    -->
         
         <div style="position:fixed;top: 40%; background-color: teal; width:400px; box-shadow: 10px 10px 5px #888888;" align="center">
             <table align="center" style="vertical-align: middle;">
-           	 	<tr><td>User Name : </td><td><html:text name="LoginForm" property="userName" /></td></tr>
-           		<tr><td>Password  : </td><td><html:password name="LoginForm" property="password" /> </td></tr>
+           	 	<tr><td>User Name : </td><td><html:text name="Login" property="username" /></td></tr>
+           		<tr><td>Password  : </td><td><html:password name="Login" property="password" /> </td></tr>
             	<tr><td colspan="2"><html:submit value="Login" /></td></tr>
             </table>
         </div>

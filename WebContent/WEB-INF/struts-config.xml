@@ -7,19 +7,11 @@
 
 <struts-config>
     <form-beans>
-        <form-bean name="CashExpenditure" type="com.cashflowmanagement.form.CashExpenditure"/>
-        <form-bean name="CashPurchase" type="com.cashflowmanagement.form.CashPurchase"/>
-        <form-bean name="CashSale" type="com.cashflowmanagement.form.CashSale"/>
-        <form-bean name="ChequePayment" type="com.cashflowmanagement.form.ChequePayment"/>
-        <form-bean name="ChequeReceipt" type="com.cashflowmanagement.form.ChequeReceipt"/>
-        <form-bean name="ChequeReceipt" type="com.cashflowmanagement.form.ChequeReceipt"/>
-        <form-bean name="CreditSale" type="com.cashflowmanagement.form.CreditSale"/>
-        <form-bean name="DepositInBank" type="com.cashflowmanagement.form.DepositInBank"/>
-        <form-bean name="PaymentToCreditor" type="com.cashflowmanagement.form.PaymentToCreditor"/>
-        <form-bean name="SaleOfGood" type="com.cashflowmanagement.form.SaleOfGood"/>
-        <form-bean name="SaleOfOther" type="com.cashflowmanagement.form.SaleOfOther"/>
-        <form-bean name="TaxPayment" type="com.cashflowmanagement.form.TaxPayment"/>
-        <form-bean name="WithdrawalFromBank" type="com.cashflowmanagement.form.WithdrawalFromBank"/>
+        <form-bean name="BasicSalaryDetail" type="com.taxmanagement.form.BasicSalaryDetail"/>
+        <form-bean name="IncomeTaxDetail" type="com.taxmanagement.form.IncomeTaxDetail"/>
+        <form-bean name="PerquisitesDetail" type="com.taxmanagement.form.PerquisitesDetail"/>
+        <form-bean name="UserDetail" type="com.taxmanagement.form.UserDetail"/>
+		<form-bean name="Login" type="com.taxmanagement.form.Login"/>
     	
     </form-beans>
     
@@ -34,24 +26,25 @@
     </global-forwards>
 
     <action-mappings>
-        <action input="/login.jsp" name="LoginForm" path="/Login" scope="session" type="com.cashflowmanagement.action.LoginAction">
-            
-        </action>
-        <action name="LoginForm" path="/Logout" scope="session" type="com.cashflowmanagement.action.LogoutAction">
+        <action input="/login.jsp" name="Login" path="/login" scope="session" type="com.taxmanagement.action.LoginAction">
+            <forward name="dashboard"  path="/dashboardaction.do"/>
         </action>
         
-        <action name="TaxForm" path="/tax" scope="session" type="com.cashflowmanagement.action.TaxMasterAction">
-            
+        <action name="UserDetail" path="/dashboardaction" scope="session" type="com.taxmanagement.action.UserDetailAction">
+            <forward name="userdashboard"  path="/jsp/userdashboard.jsp"/>
+            <forward name="dashboard"  path="/jsp/dashboard.jsp"/>
+        </action>
+     
+     	<action name="UserDetail" path="/useraction" scope="session" type="com.taxmanagement.action.UserDetailAction">
+            <forward name="userdashboard"  path="/jsp/userdashboard.jsp"/>
+            <forward name="dashboard"  path="/jsp/dashboard.jsp"/>
         </action>
         
-        <action name="UserForm" path="/user" scope="session" type="com.cashflowmanagement.action.UserAction">
-            
+        <action name="BasicSalaryDetail" path="/basicsalaryaction" scope="session" type="com.taxmanagement.action.BasicSalaryDetailAction">
+            <forward name="userdashboard"  path="/jsp/userdashboard.jsp"/>
+            <forward name="dashboard"  path="/jsp/dashboard.jsp"/>
         </action>
-        
-        <action name="UserForm" path="/profile" scope="request" type="com.cashflowmanagement.action.ProfileAction">
-            
-        </action>
-        
+     
     </action-mappings>
     
     <!-- <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/> -->
