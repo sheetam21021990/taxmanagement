@@ -12,7 +12,6 @@ import org.apache.struts.action.ActionForm;
 import com.taxmanagement.DBConnect.DBConnect;
 import com.taxmanagement.form.UserDetail;
 import com.taxmanagement.interfaces.Impl;
-import com.taxmanagement.vo.PerquisitesDetailVo;
 import com.taxmanagement.vo.UserDetailVo;
 
 
@@ -121,32 +120,8 @@ public class UserDetailImpl implements Impl {
 		try {
 			con = DBConnect.openConnection();
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("INSERT INTO user_details(username,PASSWORD,fullname,pancard_no,voter_id,fax_no,phone_no,mobile_no,address,email_id,STATUS) VALUES ('"+bean.getId()+"','"+bean.getUsername()+"','"+bean.getPassword()+"','"+bean.getFullname()+"','"+bean.getPancardNo()+"','"+bean.getVoterId()+"','"+bean.getFaxNo()+"','"+bean.getPhoneNo()+"','"+bean.getMobileNo()+"','"+bean.getAddress()+"','"+bean.getEmailId()+"','"+bean.getStatus()+"')");
-
-			ArrayList<UserDetailVo> userDetailsVo = new ArrayList<UserDetailVo>();
-			
-			while (rs.next()) {
-				
-				UserDetailVo vo = new UserDetailVo(
-						rs.getInt("id"), 
-						rs.getString("username"), 						
-						rs.getString("PASSWORD"),
-						rs.getString("fullname"),
-						rs.getString("pancard_no"),
-						rs.getString("voter_id"),
-						rs.getString("fax_no"),
-						rs.getString("phone_no"),
-						rs.getString("mobile_no"),
-						rs.getString("address"),
-						rs.getString("email_id"),
-						rs.getString("STATUS"));
-
-				userDetailsVo.add(vo);
-			}
-			bean.setUserDetailsVo(userDetailsVo);
-			
+			int count = stmt.executeUpdate("INSERT INTO user_details(username,PASSWORD,fullname,pancard_no,voter_id,fax_no,phone_no,mobile_no,address,email_id,STATUS,user_type) VALUES ('"+bean.getUsername()+"','"+bean.getPassword()+"','"+bean.getFullname()+"','"+bean.getPancardNo()+"','"+bean.getVoterId()+"','"+bean.getFaxNo()+"','"+bean.getPhoneNo()+"','"+bean.getMobileNo()+"','"+bean.getAddress()+"','"+bean.getEmailId()+"','A','USER')");
 			DBConnect.closeConnection(con);
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch(Exception e){

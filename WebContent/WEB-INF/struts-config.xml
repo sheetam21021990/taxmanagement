@@ -24,6 +24,7 @@
         <forward name="welcome"  path="/Welcome.do"/>
         <forward name="login"  path="/jsp/login.jsp"/>
         <forward name="failure" path="/jsp/failure.jsp" />
+        <forward name="loginfailure" path="/jsp/loginfailure.jsp" />
     </global-forwards>
 
     <action-mappings>

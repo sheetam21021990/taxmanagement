@@ -1,6 +1,7 @@
 <div style="width: 100%; height:50px; position:fixed;top:80px; box-shadow: 10px 10px 5px #888888;">
 		
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/myscript.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.validate.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/bootstrap/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/mycss.css" type="text/css"/>
@@ -14,12 +15,20 @@
 <div align="center">
 
 	<img src="<%=request.getContextPath()%>/icons/personal-information-icon.png" title="personal information"  height="50px"  class="img-rounded menu" style="float: left; display: inline;" data-toggle="modal" data-target="#myModal" >
-	<img src="<%=request.getContextPath()%>/icons/payment-icon.png" title="Basic Salary"  height="50px"  class="img-rounded menu" data-toggle="modal" data-target="#myModalbasicsalary"  >
-	<img src="<%=request.getContextPath()%>/icons/hopusing-info.png" title="Prerequisite Details"  height="50px"  class="img-rounded menu" data-toggle="modal" data-target="#myModalprerequisitedetails">
-	<img src="<%=request.getContextPath()%>/icons/pay-tax.png" title="Pay Tax"  height="50px"  class="img-rounded menu" data-toggle="modal" data-target="#myModalincometaxdetail">
-
-	<img src="<%=request.getContextPath()%>/icons/logout.png" alt="Logout" height="50px"  class="img-rounded menu" onclick="forwardTo('<%=request.getContextPath()%>/Logout.do')" style="float: right; display: inline;">
-
+	
+	<div id="menuset1" style="display:none; width: 40%; " class="menuset">
+		<img src="<%=request.getContextPath()%>/icons/payment-icon.png" title="Basic Salary"  height="50px"  class="img-rounded menu " data-toggle="modal" data-target="#myModalbasicsalary"  >
+		<img src="<%=request.getContextPath()%>/icons/hopusing-info.png" title="Prerequisite Details"  height="50px"  class="img-rounded menu" data-toggle="modal" data-target="#myModalprerequisitedetails">
+	</div>
+	<div id="menuset2" style="display:inline; width: 40%; "  class="menuset">
+<img src="<%=request.getContextPath()%>/icons/pay-tax.png" title="Pay Tax"  height="50px"  class="img-rounded menu" data-toggle="modal" data-target="#myModalincometaxdetail">
+		<%-- <img src="<%=request.getContextPath()%>/icons/payment-icon.png" title="Income Tax Details"  height="50px"  class="img-rounded menu" >
+		<img src="<%=request.getContextPath()%>/icons/hopusing-info.png" title="View Statisical Report"  height="50px"  class="img-rounded menu"> --%>
+	</div>
+	
+	<div style="display:inline; width: 20%;">
+		<img src="<%=request.getContextPath()%>/icons/logout.png" alt="Logout" height="50px"  class="img-rounded menu" onclick="forwardTo('<%=request.getContextPath()%>/Logout.do')" style="float: right; display: inline;">
+	</div>
 </div>
 </div>
 
@@ -160,7 +169,28 @@ $("#form1").validate({
         <table align="center" height="200px"">
 
 		<tr><td align="left">USER ID </td><td>:<input readonly="readonly" type="text" id="userId" name="userId"  value="<%= session.getAttribute(Common.SESSIONKEY.LOGGEDINUSERNAME.name()) %>"></td></tr>
-		<tr><td align="left">ASSESMENT YEAR </td><td>:<input type="date" id="assesmentYear" name="assesmentYear" data-provide="datepicker" class="datepicker" data-date-format="mm/dd/yyyy"></td></tr>
+		<tr><td align="left">ASSESMENT YEAR </td><td>:<input type="date" id="assesmentYear" name="assesmentYear" data-provide="datepicker" class="datepicker" data-date-format="mm/dd/yyyy">(yyyy-mm-dd)</td></tr>
+		<tr><td align="left">MONTH </td>
+			<td>:
+				<select id="month" name="month">
+
+					<option value="JANUARY">JANUARY</option>
+					<option value="FEBUARY">FEBUARY</option>
+					<option value="MARCH">MARCH</option>
+					<option value="APRIL">APRIL</option>
+					<option value="MAY">MAY</option>
+					<option value="JUNE">JUNE</option>
+					<option value="JULY">JULY</option>
+					<option value="AUGUST">AUGUST</option>
+					<option value="SEPTEMBER">SEPTEMBER</option>
+					<option value="OCTOBER">OCTOBER</option>
+					<option value="NOVENBER">NOVENBER</option>
+					<option value="DECEMBER">DECEMBER</option>
+
+
+				</select>
+			</td>
+		</tr>
 		<tr><td align="left">PAID INCOME TAX </td><td>:<input type="text" id="paidIncometax" name="paidIncometax"></td></tr>
         
 		</table>

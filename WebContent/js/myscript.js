@@ -15,3 +15,15 @@ function addElement(){
 function changeView(){
 	document.forms[0].submit();
 }
+
+function showmenu(m,d){
+	
+	$('.menuset').hide(500);
+	$('#menuset'+m).show(500);
+	$('#menuset'+m).css("display", "inline");
+
+	$('.displayset').hide(500);
+	$('#displayset'+m).show(500);
+	
+	
+}

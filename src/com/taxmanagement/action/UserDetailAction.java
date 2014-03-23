@@ -20,13 +20,21 @@ public class UserDetailAction extends Action implements ActionInterface {
 
 		try {
 			UserDetail userDetail = (UserDetail)form;
-			userDetail.setId((Integer)request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERID.name()));
+			
+			
+			if(request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERID.name()) != null)
+				userDetail.setId((Integer)request.getSession().getAttribute(Common.SESSIONKEY.LOGGEDINUSERID.name()));
 			
 			UserDetailImpl impl = new UserDetailImpl(userDetail);
 			
 			if(request.getParameter("task") != null){
 				if("updateuser".equalsIgnoreCase(request.getParameter("task").toString())){
 					impl.update();
+				}
+				
+				if("newuser".equalsIgnoreCase(request.getParameter("task").toString())){
+					impl.insert();
+					return mapping.findForward("login");
 				}
 			}
 			

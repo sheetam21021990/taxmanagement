@@ -1,13 +1,18 @@
 package com.taxmanagement.impl;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import org.apache.struts.action.ActionForm;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.taxmanagement.DBConnect.DBConnect;
 import com.taxmanagement.form.IncomeTaxDetail;
@@ -28,6 +33,9 @@ public class IncomeTaxDetailImpl implements Impl {
 	
 	public IncomeTaxDetailImpl(ActionForm form){
 		this.bean = (IncomeTaxDetail)form;
+	}
+	
+	public IncomeTaxDetailImpl(){
 	}
 	
 	
@@ -101,7 +109,7 @@ public class IncomeTaxDetailImpl implements Impl {
 		try {
 			con = DBConnect.openConnection();
 			Statement stmt = con.createStatement();
-			int rs = stmt.executeUpdate("INSERT INTO income_tax_details(user_id,assesment_year,paid_incometax) VALUES ('"+bean.getUserId()+"','"+bean.getAssesmentYear()+"','"+bean.getPaidIncometax()+"')");
+			stmt.executeUpdate("INSERT INTO income_tax_details(user_id,assesment_year,paid_incometax, paid_month) VALUES ('"+bean.getUserId()+"','"+bean.getAssesmentYear()+"','"+bean.getPaidIncometax()+"','"+bean.getMonth()+"')");
 			
 			DBConnect.closeConnection(con);
 
@@ -249,5 +257,54 @@ public class IncomeTaxDetailImpl implements Impl {
 
 		
 	}
+	
+public String getTaxReport(String username, String datestring) {
+		
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy_mm_dd");
+	
+		try {
+			
+			JSONObject dataset = new JSONObject(); 
+			JSONArray taxset = new JSONArray(); 
+			JSONArray data = null;
+			
+			
+			con = DBConnect.openConnection();
+			CallableStatement stmt = con.prepareCall("{CALL p_taxcalculation(?,?,?,?)}");
+			
+			stmt.setString(1, username);
+			stmt.setDate(2, new Date(sdf.parse(datestring).getTime()));
+			
+			stmt.registerOutParameter(3, java.sql.Types.VARCHAR);
+			stmt.registerOutParameter(4, java.sql.Types.VARCHAR);
+			
+			stmt.executeUpdate();
+				
+			ResultSet rs = stmt.getResultSet();
+			
+			while(rs.next()){
+				data = new JSONArray();
+				data.put(rs.getString(1));
+				data.put( rs.getInt(2));
+				taxset.put(data);
+			}
+			
+			dataset.put("tax", stmt.getString(3));
+			dataset.put("grosssalary", stmt.getString(4));
+			dataset.put("paidtax", taxset);
+			
+			DBConnect.closeConnection(con);
+
+			return dataset.toString();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	
 	
 }

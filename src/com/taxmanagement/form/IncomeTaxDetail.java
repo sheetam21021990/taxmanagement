@@ -21,6 +21,20 @@ public class IncomeTaxDetail extends ActionForm {
 	private int paidIncometax;
 
 	private String userId;
+	
+	private String month;
+	
+	
+
+	public String getMonth() {
+		return month;
+	}
+
+
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
 
 	private List<IncomeTaxDetailVo> incomeTaxDetailVo;
 	
